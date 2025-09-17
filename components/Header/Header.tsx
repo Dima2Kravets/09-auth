@@ -1,23 +1,22 @@
-import css from "./Header.module.css"
-import Link from 'next/link';
-import TagsMenu from "../TagsMenu/TagsMenu";
-const Header = () => {
+import Link from "next/link";
+import css from "./Header.module.css";
 
+import AuthNavigation from "@/components/AuthNavigation/AuthNavigation";
+
+export default function Header() {
   return (
     <header className={css.header}>
-      <Link href='/' aria-label='Home' className={css.headerLink}>
+      <Link href="/" aria-label="Home">
         NoteHub
       </Link>
-      <nav aria-label='Main Navigation'>
+      <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
-          <li className={css.navigationItem }>
-            <Link href='/' className={css.navigationLink}>Home</Link>
+          <li>
+            <Link href="/">Home</Link>
           </li>
-          <li className={css.navigationItem }><TagsMenu/></li>      
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
   );
-};
-
-export default Header;
+}

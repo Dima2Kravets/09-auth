@@ -1,57 +1,57 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
-import "./globals.css";
-import Header from "../components/Header/Header";
-import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import Footer from "@/components/Footer/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import './globals.css';
+import Header from '@/components/Header/Header';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import Footer from '@/components/Footer/Footer';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
+  subsets: ['latin'],
   weight: ['400', '700'],
-  display: 'swap', 
+  variable: '--font-roboto',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Note Hub",
-  description: "Simple app to create and manage your notes",
+  title: 'NoteHUB',
+  description:
+    'Create, edit, and delete notes, and organize them with tags all in one place.',
   openGraph: {
-    type: "website",
-    title: "Note Hub – Create and Manage Your Notes Easily",
-    description: "Note Hub is a simple and intuitive app that helps you create, organize, and manage your notes efficiently.",
+    title: 'NoteHUB app',
+    description: 'NoteHUB Application',
+    url: 'https://08-zustand-blush-one.vercel.app/',
     images: [
       {
-        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Screenshot of Note Hub app interface"
-      }
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1000,
+        height: 600,
+        alt: 'NoteHUB',
+      },
     ],
-    url: `https://notehub.com`,
-   }
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
-  children, modal,
-}: Readonly<{ children: React.ReactNode; modal: React.ReactNode; }>) {
+  children,
+  modal,
+}: Readonly<{
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
+      <body className={`${roboto.variable} `}>
         <TanStackProvider>
-          <Header />
-          {children}
-          {modal}
-          <Footer/>
+          <AuthProvider>
+            <Header />
+            <main>
+              {children}
+              {modal}
+            </main>
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

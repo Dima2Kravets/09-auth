@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fetchNotes } from "@/lib/api";
+import { fetchNotes } from "@/lib/api/serverApi";
 import {
   QueryClient,
   HydrationBoundary,
@@ -51,9 +51,9 @@ const App = async ({ params, searchParams }: Props) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["notes", { page, search, tag }],
-    queryFn: () => fetchNotes(page, search, 12, "created", tag),
-  });
+  queryKey: ["notes", { page, search, tag }],
+  queryFn: () => fetchNotes({ page, perPage: 12, search, tag }),
+});
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
