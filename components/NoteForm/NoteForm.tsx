@@ -1,5 +1,5 @@
 'use client';
-import css from "@/components/NoteForm/NoteForm.module.css"
+import css from ".NoteForm.module.css"
 import { useId } from "react";
 import { createNote } from "@/lib/api/clientApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

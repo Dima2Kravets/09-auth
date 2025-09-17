@@ -3,7 +3,7 @@ import {
   HydrationBoundary,
   dehydrate,
 } from "@tanstack/react-query";
-import NoteDetailsClient from "@/app/(private routes)/notes/[id]/NoteDetails.client";
+import NoteDetailsClient from "./NoteDetails.client";
 import type { Metadata } from "next";
 import { fetchNoteById } from "@/lib/api/serverApi";
 type Props = {
