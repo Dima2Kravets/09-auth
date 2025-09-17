@@ -22,7 +22,6 @@ export default function NoteForm() {
     });
   };
 
-
   const { mutate } = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
