@@ -16,8 +16,7 @@ export default function NoteForm() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-	  // 4. Коли користувач змінює будь-яке поле форми — оновлюємо стан
-    setDraft({
+	      setDraft({
       ...draft,
       [event.target.name]: event.target.value,
     });
